@@ -1,1 +1,1 @@
-web: gunicorn djangoauth.wsgi:application
+web: gunicorn blog_prj.wsgi:application
