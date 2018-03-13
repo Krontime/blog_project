@@ -26,7 +26,7 @@ SECRET_KEY = 'ncm*b@x*cr)=&-yiwafpfdan=xl_4w&c-m+!x15y)@5b6!z)*o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['blog-prj-krontime.c9users.io']
 
 
 # Application definition
