@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+{% load bootstrap_tags %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <a class="btn btn-primary" href="{% url 'post_list' %}">Back</a>
+<h3><span style="color:lightgrey">Author: </span>{{ post.author.username }}</h3>
+    <p><span style="color:lightgrey">Title: </span>{{ post.title }}</p>
+    <hr>
+    <p style="color:lightgrey">Content:</p>
+    <p>{{ post.content }}</p>
+    
+    </div>
+</div>
+{% endblock content %}

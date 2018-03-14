@@ -1,0 +1,9 @@
+{% extends 'home/base.html' %}
+{% block content %}
+{% csrf_token %}
+
+    <h3>{{ user.username }}</h3>
+    <hr>
+    <p>Your Email is {{ user.email }}</p>
+
+{% endblock content %}
