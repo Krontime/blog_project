@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 # @login_required
 def logout(request):
     auth.logout(request)
+    messages.success(request, "You have successfully logged out!")
     return redirect('home')
 
 def login(request):
@@ -15,6 +16,7 @@ def login(request):
             user = auth.authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
             if user is not None:
                 auth.login(request, user)
+                messages.success(request, "You have successfully logged in!")
                 return redirect("home")
             else:
                 form.add_error(None, "Your username or password was not recognised")
