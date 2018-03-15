@@ -1,7 +1,67 @@
 body{
     margin-top: 50px;
+    background-color: #660042;
+    color: gray;
 }
 
 .muted-text{
-    color: lightgray;
+    color: gray;
+}
+
+.image_details{
+    min-height: 300px;
+    max-height: 100vh;
+    max-width: 62vw;
+}
+
+.image_preview{
+    height: 120px;
+}
+
+.navbar{
+    background-image: linear-gradient(#660042, #4F0042 60%, #420042);
+    border-color: #320032;
+}
+
+.list-group-item{
+    background-color: #560032;
+    color: #E1D5CD;
+    border: 1px solid orange;
+}
+
+.badge{
+    background-image: linear-gradient(#EA5B00, #E54600 60%, #B03900);
+    border-color: orange;
+    font-size: 1.5em;
+    border-radius: 30px;
+}
+
+
+.btn-primary{
+    background-image: linear-gradient(#EA5B00, #E54600 60%, #B03900);
+    border-color: orange;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-success{
+    background-image: linear-gradient(#EA1E42, #C61E42 60%, #B91E42);
+    border-color: pink;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+    color:  #E54600;
+    margin: 10px;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus{
+    background-image: linear-gradient(#EA5B00, #E54600 60%, #B03900);
+}
+
+.form-control{
+    background-image: linear-gradient(#EA5B00, #E54600 60%, #B03900);
+    border-color: orange;
+    color: white;
 }

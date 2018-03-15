@@ -5,13 +5,19 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <a class="btn btn-primary" href="{% url 'post_list' %}">Back</a>
-<h3><span style="color:lightgrey">Author: </span>{{ post.author.username }}</h3>
-    <p><span style="color:lightgrey">Title: </span>{{ post.title }}</p>
-    <hr>
-    <p style="color:lightgrey">Content:</p>
-    <p>{{ post.content }}</p>
-    
+        <div class="col-xs-11 list-group-item">
+        <a class="btn btn-primary" href="{% url 'home' %}">Back</a>
+        {% if user.is_authenticated %}
+            <a class="btn btn-success" href="{% url 'edit_post' post.id %}">Edit Post</a>
+            <a class="btn btn-success" href="{% url 'delete_post' post.id %}">Delete Post</a>
+        {% endif %}
+        <h3><span style="color:lightgrey">Author: </span>{{ post.author.username }}</h3>
+        <p><span style="color:lightgrey">Title: </span>{{ post.title }}</p>
+        <hr>
+        <p style="color:lightgrey">Content:</p>
+        <p>{{ post.content }}</p>
+        <img class="image_details" src="{{ MEDIA_URL }}{{post.image}}"/>
+        </div>
     </div>
 </div>
 {% endblock content %}

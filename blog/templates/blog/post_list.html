@@ -1,37 +1,68 @@
 {% extends 'home/base.html' %}
 {% load bootstrap_tags %}
 {% load staticfiles %}
-
 {% block content %}
-<div class="container">
-    <div class="row">
-            <form method="POST">
-            <input type="submit" value="New Post" class="btn btn-success"/>
-            <br>
-            <br>
+    
+    <div class="container">
+        <div class="row">
+            {% if user.is_authenticated %}
+            <div class='row'>
+                <div class="col-xs-1 col-xs-offset-10">
+                    <a class="btn btn-success" href="{% url 'new_post' %}">New Post</a>
+                </div>
+            </div>
+            {% endif %}
             {% csrf_token %}
             {% for post in user.posted.all %}
-            
-            <a class="list-group-item">
                 <div class="row">
-                    <div class="col-xs-6">
-                        <span class="name" style="min-width: 120px; display: inline-block;"><p class="muted-text">Author:</p>{{ post.author.username }}</span>
+                    <div class="col-xs-2 text-center">
+                        <a class="story-img" href="#">
+                            <img src="http://via.placeholder.com/100x100" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
+                        </a>
                     </div>
-                    <div class="col-xs-6">
-                        <span class=""><p class="muted-text">Title:</p>{{ post.title }}</span>
-                    </div>
-                    <div class="col-xs-12">
-                        <p class="muted-text">Content</p>
-                        <p>{{ post.content | truncatewords:10}}</p> 
+                    <div class="col-xs-10 list-group-item">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <h3>{{ post.author.username }}</h3>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <h4>{{ post.title }}</h4>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <h4>Date:</h4>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <p style="margin:10px">{{ post.published_date }}</span><span class="pull-right"></p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-8 col-xs-offset-2">
+                                    <p class="muted-text">Content</p>
+                                    <p>{{ post.content | truncatewords:60}}</p> 
+                                </div>
+                                <div class="col-xs-3">
+                                    <img class="image_preview" src="{{ MEDIA_URL }}{{post.image}}"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <a class="btn btn-sm btn-primary" href="{% url 'view_post' post.id %}">Read More</a>
+                                </div>
+                                <div class="col-xs-2 col-xs-offset-4">
+                                    <span class="badge">{{ post.tag }}</span>
+                                </div>
+                                <div class="col-xs-2">
+                                    <span class="badge">Views: {{ post.views }}</span><span class="pull-right"></span>
+                                </div>
+                                
+                            </div>
+                   
                     </div>
                 </div>
-                    <a href="{% url 'view_post' post.id %}">Read More</a>
-                    <span class="badge">{{ post.views }}</span><span class="pull-right"></span>
-            </a>
+                <br>
+                <br>
             {% endfor %}
-            
-            <hr> 
-            </form>
+        </div>
     </div>
-</div>
-{% endblock content %}
+
+{% endblock %}
