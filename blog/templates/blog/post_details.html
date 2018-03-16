@@ -1,4 +1,5 @@
 {% extends 'home/base.html' %}
+{% load gravatar %}
 {% load bootstrap_tags %}
 {% load staticfiles %}
 
@@ -16,7 +17,9 @@
         <hr>
         <p style="color:lightgrey">Content:</p>
         <p>{{ post.content }}</p>
-        <img class="image_details" src="{{ MEDIA_URL }}{{post.image}}"/>
+        {% if post.image %}
+            <img class="image_details" src="{{ MEDIA_URL }}{{post.image}}"/>
+        {% endif %}
         </div>
     </div>
 </div>

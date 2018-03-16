@@ -3,7 +3,7 @@ from django.contrib import messages, auth
 from .forms import *
 from django.contrib.auth.decorators import login_required
 
-# @login_required
+@login_required
 def logout(request):
     auth.logout(request)
     messages.success(request, "You have successfully logged out!")
@@ -24,7 +24,7 @@ def login(request):
         form = UserLoginForm()
     return render(request, 'accounts/login.html', { 'form': form })
 
-# @login_required    
+@login_required    
 def profile(request):
     return render(request, 'accounts/profile.html')
 

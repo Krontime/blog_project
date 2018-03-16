@@ -1,4 +1,5 @@
 {% extends 'home/base.html' %}
+{% load gravatar %}
 {% load bootstrap_tags %}
 {% load staticfiles %}
 {% block content %}
@@ -17,17 +18,23 @@
                 <div class="row">
                     <div class="col-xs-2 text-center">
                         <a class="story-img" href="#">
-                            <img src="http://via.placeholder.com/100x100" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
+                            <img src="{% gravatar_url post.author.email %}" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
                         </a>
                     </div>
                     <div class="col-xs-10 list-group-item">
                             <div class="row">
                                 <div class="row">
-                                    <div class="col-xs-4">
+                                    <div class="col-xs-3">
                                         <h3>{{ post.author.username }}</h3>
                                     </div>
-                                    <div class="col-xs-4">
+                                    <div class="col-xs-3">
                                         <h4>{{ post.title }}</h4>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <h4>Date:</h4>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <p style="margin:10px">{{ post.published_date }}</span><span class="pull-right"></p>
                                     </div>
                                 </div>
                                 <div class="col-xs-8 col-xs-offset-2">
@@ -35,19 +42,22 @@
                                     <p>{{ post.content | truncatewords:60}}</p> 
                                 </div>
                                 <div class="col-xs-3">
-                                    <img class="image_preview" src="{{ MEDIA_URL }}{{post.image}}"/>
+                                    {% if post.image %}
+                                        <img class="image_preview" src="{{ MEDIA_URL }}{{post.image}}"/>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-2">
                                     <a class="btn btn-sm btn-primary" href="{% url 'view_post' post.id %}">Read More</a>
                                 </div>
-                                <div class="col-xs-2 col-xs-offset-6">
+                                <div class="col-xs-2 col-xs-offset-4">
                                     <span class="badge">{{ post.tag }}</span>
                                 </div>
                                 <div class="col-xs-2">
                                     <span class="badge">Views: {{ post.views }}</span><span class="pull-right"></span>
                                 </div>
+                                
                             </div>
                    
                     </div>
